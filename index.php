@@ -8,10 +8,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Information uploaded</title>
 </head>
 
 <body>
+
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data">
+        <div>
+            <label for=""> Name:</label>
+            <input required type="text" name="name" id="">
+        </div>
+        <div>
+            <label for="">Phone:</label>
+            <input required type="text" name="phone" id="">
+        </div>
+        <div>
+            <label for="">Image:</label>
+            <input required type="file" name="photo" id="">
+        </div>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+
+</html>
+
 
 <?php
    if($_SERVER['REQUEST_METHOD']==="POST"){
@@ -40,7 +60,7 @@
                     echo "Information uploaded successful.";
                 }
             }catch(mysqli_sql_exception $error){
-                echo "Error in file: {$error->getFile()} in line: {$error->getLine()}";
+                // echo "Error in file: {$error->getFile()} in line: {$error->getLine()}";
                 echo "Error: " . $error->getMessage();
             }
             finally{
@@ -54,21 +74,3 @@
     }
    }
 ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data">
-        <div>
-            <label for=""> Name:</label>
-            <input required type="text" name="name" id="">
-        </div>
-        <div>
-            <label for="">Phone:</label>
-            <input required type="text" name="phone" id="">
-        </div>
-        <div>
-            <label for="">Image:</label>
-            <input required type="file" name="photo" id="">
-        </div>
-        <input type="submit" name="submit" value="Submit">
-    </form>
-</body>
-
-</html>
