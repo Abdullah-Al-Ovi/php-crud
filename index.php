@@ -26,6 +26,26 @@
             <label for="">Image:</label>
             <input required type="file" name="photo" id="">
         </div>
+        <div>
+            <input type="radio" name="gender" value="male">
+            <label>Male</label>
+        </div>
+        <div>
+            <input type="radio" name="gender" value="female">
+            <label>Female</label>
+        </div>
+        <div>
+        <input type="checkbox" name="hobbies[]" value="Reading">
+        <label for="">Reading</label>
+    </div>
+    <div>
+        <input type="checkbox" name="hobbies[]" value="Traveling">
+        <label for="">Traveling</label>
+    </div>
+    <div>
+        <input type="checkbox" name="hobbies[]" value="Cooking">
+        <label for="">Cooking</label>
+    </div>
         <input type="submit" name="submit" value="Submit">
     </form>
 </body>
@@ -49,11 +69,13 @@
         $name = $_POST["name"];
         $phone =$_POST["phone"];
         $image = $_FILES["photo"]["name"];
+        $gender = isset($_POST["gender"]) ? $_POST["gender"] : '';
+        $hobbies = isset($_POST["hobbies"]) ? implode(",", $_POST["hobbies"]) : '';
         $dst = "./image/" .$image;
         $dst_db = "image/" .$image;
         
         if(move_uploaded_file($_FILES["photo"]["tmp_name"],$dst)){
-            $query = "Insert INTO student (name, phone, image) VALUES('$name','$phone','$dst_db')";
+           $query= "INSERT INTO student (name, phone, image, gender, hobbies) VALUES ('$name', '$phone', '$dst_db', '$gender', '$hobbies')";
             try{
                 $result = mysqli_query($conn,$query);
                 if($result){

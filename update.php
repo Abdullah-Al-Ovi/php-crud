@@ -50,6 +50,29 @@ try {
             <label for="">New Image</label>
             <input type="file" name="photo" id="">
         </div>
+
+        <!-- Gender Radio Buttons -->
+        <div>
+            <label>Gender:</label><br>
+            <input type="radio" name="gender" value="male" <?php echo ($item['gender'] === 'male') ? 'checked' : ''; ?>>
+            <label>Male</label>
+            <input type="radio" name="gender" value="female" <?php echo ($item['gender'] === 'female') ? 'checked' : ''; ?>>
+            <label>Female</label>
+        </div>
+
+        <!-- Hobbies Checkboxes -->
+        <div>
+            <label>Hobbies:</label><br>
+            <?php
+            $hobbiesList = ['Reading', 'Traveling', 'Cooking'];
+            $currentHobbies = explode(',', $item['hobbies']);
+            foreach ($hobbiesList as $hobby) {
+                $checked = in_array($hobby, $currentHobbies) ? 'checked' : '';
+                echo "<input type='checkbox' name='hobbies[]' value='$hobby' $checked> <label>$hobby</label><br>";
+            }
+            ?>
+        </div>
+
         <div>
             <input type="submit" value="Update">
         </div>

@@ -28,6 +28,8 @@ include("dbconnect.php");
             <td style="border:1px solid black;">Name</td>
             <td style="border:1px solid black;">Image</td>
             <td style="border:1px solid black;">Phone</td>
+            <td style="border:1px solid black;">Gender</td>
+            <td style="border:1px solid black;">Hobbies</td>
             <td style="border:1px solid black;">Delete</td>
             <td style="border:1px solid black;">Update</td>
         </tr>
@@ -39,6 +41,8 @@ include("dbconnect.php");
                 echo  "<td style='border:1px solid black;'><p>{$item["name"]}</p></td>";
                 echo  "<td style='border:1px solid black;'><img height='100' width='100' src='{$item["image"]}' ></td>";
                 echo  "<td style='border:1px solid black;'><p>{$item["phone"]}</p></td>";
+                echo  "<td style='border:1px solid black;'><p>{$item["gender"]}</p></td>";
+                echo  "<td style='border:1px solid black;'><p>{$item["hobbies"]}</p></td>";
                 echo  "<td style='border:1px solid black;'><a href='delete.php?id={$item["id"]}' >X</td>";
                 echo  "<td style='border:1px solid black;'><a href='update.php?id={$item["id"]}' >Up</td>";
                 ?>
